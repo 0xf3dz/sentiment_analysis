@@ -177,7 +177,7 @@ if __name__ == "__main__":
     import argparse
     
     parser = argparse.ArgumentParser(description='Train IMDb sentiment analysis model')
-    parser.add_argument('--model', type=str, default='improved_cnn_lstm',
+    parser.add_argument('--model', type=str, default='cnn',
                         choices=list(MODEL_REGISTRY.keys()),
                         help='Model architecture to use')
     parser.add_argument('--batch_size', type=int, default=64,
