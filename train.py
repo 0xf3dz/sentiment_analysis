@@ -47,7 +47,7 @@ def create_callbacks(model_name):
     os.makedirs('models', exist_ok=True)
     os.makedirs('logs', exist_ok=True)
     
-    filepath = f"models/{model_name}_best.h5"
+    filepath = f"models/{model_name}_best.keras"
     
     callbacks = [
         # Model checkpoint to save best weights
@@ -169,7 +169,7 @@ def train_model(model_name, batch_size=64, epochs=15):
     save_training_results(history, model_name)
     
     # Save the final model
-    model.save(f'models/{model_name}_final.h5')
+    model.save(f'models/{model_name}_final.keras')
     
     return model, history
 
