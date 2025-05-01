@@ -82,7 +82,7 @@ python train_model.py
 python train_model.py --model lstm
 
 # Train with custom settings
-python train_model.py --model transformer --batch_size 32 --epochs 20
+python train_model.py --model lstm --batch_size 32 --epochs 20
 ```
 
 ### 4. Evaluate Models
