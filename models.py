@@ -12,7 +12,7 @@ from tensorflow.keras.models import Sequential, Model
 from tensorflow.keras.layers import (
     Dense, Embedding, LSTM, Conv1D, MaxPooling1D, Dropout, 
     BatchNormalization, Bidirectional, GlobalMaxPooling1D, SpatialDropout1D,
-    Input, concatenate
+    Input, concatenate, GRU
 )
 from tensorflow.keras.regularizers import l2
 
