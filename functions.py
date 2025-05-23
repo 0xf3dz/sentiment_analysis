@@ -21,10 +21,10 @@ import asyncio
 
 def predict_ensemble (text):
 
-    sentiment_model = load_model('models\sentiment_model_finetuned.keras', compile=False)
+    sentiment_model = load_model('models/sentiment_model_finetuned.keras', compile=False)
     sentiment_model.name = 'sentiment_model'
     sentiment_model.trainable = False
-    emotion_model = load_model('models\emotion_model_finetuned.keras', compile=False)
+    emotion_model = load_model('models/emotion_model_finetuned.keras', compile=False)
     emotion_model.name = 'emotion_model'
     emotion_model.trainable = False
 
