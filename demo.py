@@ -7,7 +7,6 @@ import os
 from audio_recorder_streamlit import audio_recorder
 import queue
 import threading
-import pyaudio
 import time
 from functions import predict_ensemble, predict_transformer, predict_claude
 
