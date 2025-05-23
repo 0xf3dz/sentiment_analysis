@@ -44,7 +44,9 @@ pip install -r requirements.txt
 ```
 
 ## Add API KEY
+To run the app locally from your terminal you need to set your own API key.
 In `demo.py` set api_key to your own own Anthropic API key.
+Otherwise, navigate to the website directly: https://sentimotions.streamlit.app/
 
 ## Usage
 
