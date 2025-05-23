@@ -43,6 +43,9 @@ cd sentiment_analysis
 pip install -r requirements.txt
 ```
 
+## Add API KEY
+In `demo.py` set api_key to your own own Anthropic API key.
+
 ## Usage
 
 ```bash
