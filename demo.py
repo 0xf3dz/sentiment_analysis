@@ -1,3 +1,17 @@
+import sys
+
+# Patch Streamlit's file watcher to exclude torch.classes
+import streamlit.watcher.local_sources_watcher as local_sources_watcher
+
+original_extract_paths = local_sources_watcher.extract_paths
+
+def safe_extract_paths(module):
+    if getattr(module, "__name__", "").startswith("torch"):
+        return []
+    return original_extract_paths(module)
+
+local_sources_watcher.extract_paths = safe_extract_paths
+
 import streamlit as st
 import whisper
 import numpy as np
@@ -9,12 +23,7 @@ import queue
 import threading
 import time
 from functions import predict_ensemble, predict_transformer, predict_claude
-
-import sys
-# Monkey-patch to prevent Streamlit from walking through torch.classes
-if "torch" in sys.modules:
-    import torch
-    torch.classes.__path__ = []  # prevent Streamlit from trying to resolve this
+import torch
 
 
 st.set_page_config(layout="wide")
