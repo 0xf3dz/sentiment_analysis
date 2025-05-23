@@ -45,7 +45,7 @@ pip install -r requirements.txt
 
 ## Add API KEY
 To run the app locally from your terminal you need to set your own API key.
-In `demo.py` set api_key to your own own Anthropic API key.
+In `demo.py` set api_key to your own Anthropic API key.
 Otherwise, navigate to the website directly: https://sentimotions.streamlit.app/
 
 ## Usage
@@ -70,6 +70,3 @@ streamlit run demo.py
 - Whisper (OpenAI)
 - LangChain with Anthropic integration
 - See `requirements.txt` for complete dependencies
-
-## Note
-To use the Claude model integration, you need to add your Anthropic API key to the `functions.py` file.
