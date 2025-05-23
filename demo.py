@@ -1,23 +1,27 @@
-import sys
+# import sys
 
-# Patch Streamlit's file watcher to exclude torch.classes
-import streamlit.watcher.local_sources_watcher as local_sources_watcher
+# # Patch Streamlit's file watcher to exclude torch.classes
+# import streamlit.watcher.local_sources_watcher as local_sources_watcher
 
-original_extract_paths = local_sources_watcher.extract_paths
+# original_extract_paths = local_sources_watcher.extract_paths
 
-def safe_extract_paths(module):
-    if getattr(module, "__name__", "").startswith("torch"):
-        return []
-    return original_extract_paths(module)
+# def safe_extract_paths(module):
+#     if getattr(module, "__name__", "").startswith("torch"):
+#         return []
+#     return original_extract_paths(module)
 
-local_sources_watcher.extract_paths = safe_extract_paths
+# local_sources_watcher.extract_paths = safe_extract_paths
+
+import os
+
+# Tell Streamlit to ignore torch from its source file watcher
+os.environ["PYTHONWATCHER_IGNORE_MODULES"] = "torch,torch.*"
 
 import streamlit as st
 import whisper
 import numpy as np
 import pandas as pd
 import tempfile
-import os
 from audio_recorder_streamlit import audio_recorder
 import queue
 import threading
