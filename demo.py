@@ -1,17 +1,3 @@
-# import sys
-
-# # Patch Streamlit's file watcher to exclude torch.classes
-# import streamlit.watcher.local_sources_watcher as local_sources_watcher
-
-# original_extract_paths = local_sources_watcher.extract_paths
-
-# def safe_extract_paths(module):
-#     if getattr(module, "__name__", "").startswith("torch"):
-#         return []
-#     return original_extract_paths(module)
-
-# local_sources_watcher.extract_paths = safe_extract_paths
-
 import os
 os.environ["STREAMLIT_WATCHER_TYPE"] = "none"
 
@@ -28,6 +14,7 @@ import time
 from functions import predict_ensemble, predict_transformer, predict_claude
 import torch
 
+api_key = st.secrets["YOUR_API_KEY"]
 
 st.set_page_config(layout="wide")
 
@@ -73,7 +60,7 @@ def get_predictions_from_multiple_models(text, selected_models):
             elif model_name == 'model2':
                 results[model_name] = predict_transformer(text) 
             elif model_name == 'model3':
-                results[model_name] = predict_claude(text) 
+                results[model_name] = predict_claude(text, api_key) 
         except Exception as e:
             st.error(f"Error with {model_name}: {e}")
             results[model_name] = {
@@ -413,12 +400,6 @@ if st.session_state.history:
 
 # Sidebar for settings
 with st.sidebar:
-    # st.header("⚙️ Settings")
-    
-    # # Whisper model info (fixed to base)
-    # st.info("🎙️ **Whisper Model:** Base (Fixed)")
-    
-    # st.divider()
     
     # Model management
     st.subheader("Prediction Models")
