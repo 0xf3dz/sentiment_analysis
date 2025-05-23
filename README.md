@@ -1,16 +1,34 @@
 # Sentiment Analysis
 
-A machine learning project for sentiment analysis on IMDb movie reviews.
-
 ## Overview
+A comprehensive sentiment and emotion analysis application that processes both audio and text inputs to classify sentiment (positive/negative) and emotions across 28 different categories using multiple AI models.
 
-This project uses deep learning models to classify movie reviews as positive or negative. It includes scripts for data preprocessing, model definition, training, and evaluation.
+## Key Features
+- **Dual Input Methods**: 
+  - Audio recording with Whisper transcription
+  - Direct text input via textbox
+  
+- **Multi-Model Analysis**:
+  - **Ensemble Model**: Custom-trained Keras model combining sentiment and emotion classification
+  - **Transformer Model**: Fine-tuned transformer architecture for sentiment and emotion prediction
+  - **Claude Integration**: Uses Claude 3.5 Sonnet for LLM-based sentiment and emotion analysis
+  
+- **Comparative Analysis**: Side-by-side comparison of predictions from different models
+
+- **Interactive Dashboard**:
+  - Real-time processing and visualization
+  - Historical tracking of all analyses
+  - Export functionality for data collection
+
+## Emotion Classification
+Detects 28 distinct emotions:
+`admiration`, `amusement`, `anger`, `annoyance`, `approval`, `caring`, `confusion`, `curiosity`, `desire`, `disappointment`, `disapproval`, `disgust`, `embarrassment`, `excitement`, `fear`, `gratitude`, `grief`, `joy`, `love`, `nervousness`, `optimism`, `pride`, `realization`, `relief`, `remorse`, `sadness`, `surprise`, `neutral`
 
 ## Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/sentiment_analysis.git
+git clone https://github.com/0xf3dz/sentiment_analysis.git
 cd sentiment_analysis
 
 # Install dependencies
@@ -19,98 +37,26 @@ pip install -r requirements.txt
 
 ## Usage
 
-### 1. Preprocess the Data
-
 ```bash
-python preprocess.py
+# Run the Streamlit application
+streamlit run demo.py
 ```
-
-This step processes the raw IMDb review data and prepares it for model training.
-
-### 2. View Available Models
-
-```bash
-python models.py
-```
-
-Lists available model architectures defined in the MODEL_REGISTRY.
-
-### 3. Train Models
-
-```bash
-python train_model.py [options]
-```
-
-#### Command-line Arguments:
-
-| Argument | Description | Default |
-|----------|-------------|---------|
-| `--model` | Model architecture to use (options from MODEL_REGISTRY) | `cnn` |
-| `--batch_size` | Batch size for training | `64` |
-| `--epochs` | Maximum number of training epochs | `15` |
-
-#### Examples:
-
-```bash
-# Train default CNN model
-python train_model.py
-
-# Train LSTM model
-python train_model.py --model lstm
-
-# Train with custom settings
-python train_model.py --model lstm --batch_size 32 --epochs 20
-```
-
-### 4. Evaluate Models
-
-```bash
-python evaluate_model.py [options]
-```
-
-#### Command-line Arguments:
-
-| Argument | Description |
-|----------|-------------|
-| `--model` | Specific model to evaluate (omit to evaluate all models) |
-| `--compare` | Compare all evaluated models |
-
-#### Examples:
-
-```bash
-# Evaluate and compare all models
-python evaluate_model.py
-
-# Evaluate only the CNN model
-python evaluate_model.py --model cnn  
-
-# Evaluate LSTM model and compare with previously evaluated models
-python evaluate_model.py --model lstm --compare
-```
-
-## Model Outputs
-
-After training and evaluation, the following artifacts will be generated:
-
-- **Models**: Saved in the `models/` directory
-- **Training History**: Plots and data in `plots/` and `results/` directories
-- **Evaluation Results**: Performance metrics and comparisons in `results/` directory
 
 ## Project Structure
+- `demo.py`: Main Streamlit application
+- `functions.py`: Core prediction functions for all models
+- `models/`: Directory containing pre-trained models
+- `audio_files/`: Sample audio files for testing
+- `tokenizer.json`: Text tokenizer for model input processing
+- `optimal_thresholds.json` & `optimal_thresholds_transformer.json`: Calibrated thresholds for emotion classification
 
-```
-sentiment_analysis/
-├── preprocess.py         # Data preprocessing
-├── models.py             # Model architecture definitions
-├── train_model.py        # Model training script
-├── evaluate_model.py     # Model evaluation script
-├── processed_data/       # Preprocessed datasets
-├── models/               # Saved model files
-├── results/              # Evaluation results and metrics
-├── plots/                # Performance visualizations
-└── logs/                 # Training logs for TensorBoard
-```
+## Requirements
+- Python 3.8+
+- Streamlit
+- TensorFlow
+- Whisper (OpenAI)
+- LangChain with Anthropic integration
+- See `requirements.txt` for complete dependencies
 
-## License
-
-[MIT License](LICENSE)
+## Note
+To use the Claude model integration, you need to add your Anthropic API key to the `functions.py` file.
