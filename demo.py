@@ -13,9 +13,8 @@
 # local_sources_watcher.extract_paths = safe_extract_paths
 
 import os
+os.environ["STREAMLIT_WATCHER_TYPE"] = "none"
 
-# Tell Streamlit to ignore torch from its source file watcher
-os.environ["PYTHONWATCHER_IGNORE_MODULES"] = "torch,torch.*"
 
 import streamlit as st
 import whisper
