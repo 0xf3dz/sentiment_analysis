@@ -10,6 +10,13 @@ import threading
 import time
 from functions import predict_ensemble, predict_transformer, predict_claude
 
+import sys
+# Monkey-patch to prevent Streamlit from walking through torch.classes
+if "torch" in sys.modules:
+    import torch
+    torch.classes.__path__ = []  # prevent Streamlit from trying to resolve this
+
+
 st.set_page_config(layout="wide")
 
 st.title("Sentiment and Emotion Classification")
