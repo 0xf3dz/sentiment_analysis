@@ -1,0 +1,10 @@
+streamlit>=1.28.0
+numpy>=1.24.0
+pandas>=2.0.0
+audio-recorder-streamlit>=0.0.8
+pyaudio>=0.2.13
+tensorflow>=2.12.0
+matplotlib>=3.7.0
+langchain>=0.0.267
+langchain-anthropic>=0.0.10
+openai-whisper>=20231117
