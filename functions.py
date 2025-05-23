@@ -159,8 +159,8 @@ def predict_transformer (text):
         'emotion': pred_emotion
     }
 
-def predict_claude(text):
-    ANTHROPIC_API_KEY = YOUR_API_KEY
+def predict_claude(text, api_key):
+    ANTHROPIC_API_KEY = api_key
     claude = ChatAnthropic(api_key=ANTHROPIC_API_KEY, model="claude-3-5-sonnet-20241022")
     
     chat_prompt = ChatPromptTemplate.from_messages([
