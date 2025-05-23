@@ -1,5 +1,13 @@
 # Sentiment Analysis
 
+
+## Note for the professors: 
+The Jupyter notebook in the repository contains detailed, commented code for training and testing the custom ML models. These models were already trained and saved, so their performance can be directly analysed.
+We encourage reviewing it to understand the model development process. 
+Also, the deployed Streamlit app enables direct assessment of the custom-trained models’ performance through interactive inputs and comparative outputs against the benchmark LLM.
+Please follow the detailed instructions below.
+
+
 ## Overview
 A comprehensive sentiment and emotion analysis application that processes both audio and text inputs to classify sentiment (positive/negative) and emotions across 28 different categories using multiple AI models.
 
