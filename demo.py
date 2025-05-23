@@ -15,6 +15,8 @@ from functions import predict_ensemble, predict_transformer, predict_claude
 import torch
 
 api_key = st.secrets["YOUR_API_KEY"]
+#Set api_key to your own Anthropic API key. Remove st.secrets, like below:
+#api_key = "YOUR_API_KEY"
 
 st.set_page_config(layout="wide")
 
